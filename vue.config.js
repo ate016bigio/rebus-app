@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/rebus-app/'
-}
+  publicPath: process.env.NODE_ENV === "production" ? "/rebus-app/" : "/",
+};
