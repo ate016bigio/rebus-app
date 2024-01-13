@@ -3,25 +3,29 @@
     <h1>
       {{ title }}
     </h1>
-    <div v-if="showModal">
-      <Modal :header="modal_header" :text="modal_text" :theme="modal_theme" @close="toggleModal"/>
-    </div>
+    <RebusImage :imageSrc="imagePath" :hint="rebusHint" />
+    <RebusSolution :words="rebusPattern"/>
   </div>
 </template>
 
 <script>
 import Modal from './components/Modal.vue'
+import RebusImage from './components/RebusImage.vue'
+import RebusSolution from './components/RebusSolution.vue'
+
 // Root component
 export default {
   name: 'App',
-  components: {Modal},
+  components: {RebusImage, RebusSolution},
   data() {
     return {
       title: '✨ Welcome to the Rebus Application ✨',
-      modal_header: "La zia",
-      modal_text: "la sa",
-      modal_theme: "sale",
-      showModal: true
+      imagePath: require('@/assets/rebuses/barbari.jpg'),
+      rebusHint: 'Ce ne sono proprio tanti',
+      rebusPattern: [
+        { id: 1, letters: [{ id: 1, value: '' }, { id: 2, value: '' }, { id: 3, value: '' }] },
+        { id: 2, letters: [{ id: 4, value: '' }, { id: 5, value: '' }, { id: 6, value: '' }] },
+      ],
     }
   },
   methods: {
